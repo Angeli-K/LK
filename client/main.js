@@ -17,6 +17,12 @@ Template.shs.events({
     form.forEach(function(obj) {
       result[obj.name] = parseInt(obj.value);
     });
+    if(result.hasOwnProperty('shs_1') && result.hasOwnProperty('shs_2') && result.hasOwnProperty('shs_3') && result.hasOwnProperty('shs_4')) {
+      result['shs_result'] = (result.shs_1+result.shs_2+result.shs_3-result.shs_4)/4;
+      result['finished'] = true;
+    } else {
+      result['finished'] = false;
+    }
     console.log(result);
     $('.shs').trigger('reset');
   }
