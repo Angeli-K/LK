@@ -1,7 +1,48 @@
 <head>
-  <title>simple</title>
+  <title>Honeybumps - Because she said so!</title>
 </head>
 
 <body>
-  {{> swls}}
 </body>
+
+<template name="mainLayout">
+  {{> yield}}
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="four columns">
+          <ul>
+            <li><a href="{{pathFor route='home'}}">Home</a></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="four columns">
+          <ul>
+            <li><a href="{{pathFor route='shs'}}">SHS</a></li>
+            <li><a href="{{pathFor route='swls'}}">SWLS</a></li>
+            <li><a href="{{pathFor route='life_art'}}">Life Art</a></li>
+            <li><a href="{{pathFor route='pwb'}}">pwb</a></li>
+          </ul>
+        </div>
+        <div class="four columns">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<template name="home">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Hello world.</h2>
+      </div>
+    </div>
+  </div>
+</template>

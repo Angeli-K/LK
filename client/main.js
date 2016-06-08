@@ -1,11 +1,45 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Router } from 'meteor/iron:router';
 
 import './main.html';
 import './life_art.html';
 import './pwb.html';
 import './shs.html';
 import './swls.html';
+
+/**
+* Routing
+*/
+Router.configure({
+  layoutTemplate: 'mainLayout'
+});
+
+Router.route('/', {
+  name: 'home',
+  template: 'home'
+});
+
+Router.route('/pwb', {
+    name: 'pwb',
+    template: 'pwb'
+});
+
+Router.route('/shs', {
+    name: 'shs',
+    template: 'shs'
+});
+
+Router.route('/life_art', {
+    name: 'life_art',
+    template: 'life_art'
+});
+
+Router.route('/swls', {
+    name: 'swls',
+    template: 'swls'
+});
+
 
 /**
 * Life Art Scala Events and helpers
