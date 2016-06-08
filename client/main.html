@@ -3,8 +3,37 @@
 </head>
 
 <body>
-  {{> shs}}
+  {{> pwb}}
 </body>
+
+<template name="pwb">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h1>Psychological Well Being</h1>
+      </div>
+    </div>
+    <form class="pwb">
+      <div class="row">
+        <div class="twelve columns">
+          <table class="u-full-width">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="four columns"></div>
+        <div class="four columns"></div>
+        <div class="four columns">
+          <input class="button-primary" type="submit" value="Submit">
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
 
 <template name="shs">
   <div class="container">
@@ -212,11 +241,11 @@ Sie zu?</td>
         </div>
       </div>
       <div class="row">
+        <div class="four columns"></div>
+        <div class="four columns"></div>
         <div class="four columns">
           <input class="button-primary" type="submit" value="Submit">
         </div>
-        <div class="four columns"></div>
-        <div class="four columns"></div>
       </div>
     </form>
   </div>
@@ -451,22 +480,12 @@ Sie zu?</td>
         </div>
       </div>
       <div class="row">
+        <div class="four columns"></div>
+        <div class="four columns"></div>
         <div class="four columns">
           <input class="button-primary" type="submit" value="Submit">
         </div>
-        <div class="four columns"></div>
-        <div class="four columns"></div>
       </div>
     </form>
   </div>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com">Discussions</a></li>
-  </ul>
 </template>

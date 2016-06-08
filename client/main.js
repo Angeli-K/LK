@@ -5,6 +5,27 @@ import './main.html';
 
 
 /**
+* PWB Scala Events and helpers
+*
+*/
+Template.pwb.events({
+  'submit .pwb': function(event) {
+    event.preventDefault();
+    var form = $('.pwb').serializeArray();
+    var result = {};
+    form.forEach(function(obj) {
+      result[obj.name] = parseInt(obj.value);
+    });
+    if(form.length = 18) {
+      
+      result['finished'] = true;
+    } else {
+      result['finished'] = false;
+    }
+  }
+});
+
+/**
 * SHS Scala Events and helpers
 *
 */
