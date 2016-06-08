@@ -2,6 +2,10 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
+import './life_art.html';
+import './pwb.html';
+import './shs.html';
+import './swls.html';
 
 /**
 * Life Art Scala Events and helpers
