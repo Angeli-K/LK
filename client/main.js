@@ -3,6 +3,37 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+/**
+* Life Art Scala Events and helpers
+*
+*/
+Template.life_art.events({
+  'submit .life_art': function(event) {
+    event.preventDefault();
+    var form = $('.life_art').serializeArray();
+    var result = {};
+    form.forEach(function(obj) {
+      result[obj.name] = parseInt(obj.value);
+    });
+    if(form.length == 30) {
+      result['of'] = (result.life_art_1+result.life_art_2+result.life_art_3)/3;
+      result['po'] = (result.life_art_4+result.life_art_5+result.life_art_6)/3;
+      result['so'] = (result.life_art_7+result.life_art_8+result.life_art_9)/3;
+      result['sk'] = (result.life_art_10+result.life_art_11+result.life_art_12)/3;
+      result['sa'] = result.life_art_13;
+      result['re'] = (result.life_art_14+result.life_art_15+result.life_art_16)/3;
+      result['si'] = (result.life_art_17+result.life_art_19+result.life_art_20)/3;
+      result['zi'] = (result.life_art_18+result.life_art_21)/2;
+      result['ge'] = (result.life_art_22+result.life_art_23+result.life_art_24)/3;
+      result['gs'] = (result.life_art_25+result.life_art_26+result.life_art_27)/3;
+      result['ko'] = (result.life_art_28+result.life_art_29+result.life_art_30)/3;
+      result['finished'] = true;
+    } else {
+      result['finished'] = false;
+    }
+    console.log(result);
+  }
+});
 
 /**
 * PWB Scala Events and helpers
