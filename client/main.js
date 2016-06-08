@@ -17,7 +17,7 @@ Template.pwb.events({
       result[obj.name] = parseInt(obj.value);
     });
     if(form.length = 18) {
-      
+      // @TODO Add calculation for pwb results
       result['finished'] = true;
     } else {
       result['finished'] = false;
