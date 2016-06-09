@@ -2,17 +2,41 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Router } from 'meteor/iron:router';
 
+/**
+* HTML Imports
+*/
 import './main.html';
 import './life_art.html';
 import './pwb.html';
 import './shs.html';
 import './swls.html';
+import './accounts.html';
 
 /**
 * Routing
 */
 Router.configure({
   layoutTemplate: 'mainLayout'
+});
+
+Router.route('/login', {
+  name: 'login',
+  template: 'login'
+});
+
+Router.route('/register', {
+  name: 'register',
+  template: 'register'
+});
+
+Router.route('/forgotPassword', {
+  name: 'forgotPassword',
+  template: 'forgotPassword'
+});
+
+Router.route('/dashboard', {
+  name: 'dashboard',
+  template: 'dashboard'
 });
 
 Router.route('/', {

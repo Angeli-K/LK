@@ -5,7 +5,35 @@
 <body>
 </body>
 
+<template name="dashboard">
+</template>
+
+<template name="navbar">
+  <div class="container">
+    <div class="row">
+      <div class="eight columns">
+        <p>
+          <h4>
+            <a href="{{pathFor route='home'}}">Home</a> &ndash;
+            <a href="{{pathFor route='shs'}}">SHS</a> &ndash;
+            <a href="{{pathFor route='swls'}}">SWLS</a> &ndash;
+            <a href="{{pathFor route='life_art'}}">Life Art</a> &ndash;
+            <a href="{{pathFor route='pwb'}}">PWB</a>
+          </h4>
+        </p>
+      </div>
+      <div class="four columns">
+        <p>
+          <h4>
+          </h4>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="mainLayout">
+  {{> navbar}}
   {{> yield}}
   <footer>
     <div class="container">
