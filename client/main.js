@@ -64,6 +64,50 @@ Router.route('/swls', {
     template: 'swls'
 });
 
+/**
+* Accounts Template helpers
+*
+*/
+
+/**
+* Register form helpers
+*/
+Template.register.events({
+  'submit .register': function(event) {
+    event.preventDefault();
+    var email = $('input[name=email]').val();
+    var password = $('input[name=password]').val();
+    var passwordVerify = $('input[name=passwordVerify]').val();
+    var gender = $('input[name=gender]:checked').val();
+    var day = $('select[name=day]').val();
+    var month = $('select[name=month]').val();
+    var year = $('select[name=year]').val();
+    if(password == passwordVerify) {
+
+    }
+    var account = {
+      email: email,
+      password: password,
+      passwordVerify: passwordVerify,
+      gender: gender,
+      birthDate: new Date(year, month, day, 0,0,0,0)
+    };
+    console.log(account);
+  }
+});
+
+/**
+* Login form helpers
+*/
+Template.login.events({
+  'submit .login': function(event) {
+    event.preventDefault();
+    var email = $('input[name=email]').val();
+    var password = $('input[name=password]').val();
+    console.log(email);
+    console.log(password);
+  }
+});
 
 /**
 * Life Art Scala Events and helpers
