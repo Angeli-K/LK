@@ -6,6 +6,26 @@
 </body>
 
 <template name="dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        DIAGRAM
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        DIAGRAM
+      </div>
+      <div class="six columns">
+        DIAGRAM
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        LAST TEST AND TRAININGSFEEDS
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="navbar">
@@ -14,17 +34,27 @@
       <div class="eight columns">
         <p>
           <h4>
-            <a href="{{pathFor route='home'}}">Home</a> &ndash;
-            <a href="{{pathFor route='shs'}}">SHS</a> &ndash;
-            <a href="{{pathFor route='swls'}}">SWLS</a> &ndash;
-            <a href="{{pathFor route='life_art'}}">Life Art</a> &ndash;
-            <a href="{{pathFor route='pwb'}}">PWB</a>
+            <a href="{{pathFor route='home'}}">Home/Dashboard</a>
+            {{#if currentUser}}
+              <a href="{{pathFor route='home'}}">Home</a> &ndash;
+              <a href="{{pathFor route='shs'}}">SHS</a> &ndash;
+              <a href="{{pathFor route='swls'}}">SWLS</a> &ndash;
+              <a href="{{pathFor route='life_art'}}">Life Art</a> &ndash;
+              <a href="{{pathFor route='pwb'}}">PWB</a>
+            {{/if}}
           </h4>
         </p>
       </div>
       <div class="four columns">
         <p>
           <h4>
+            {{#if currentUser}}
+              <a href="">{{userEmail}}</a>
+              <a href="" class="logOut">Logout</a>
+            {{else}}
+              <a href="{{pathFor route='login'}}">Login</a>
+              <a href="{{pathFor route='register'}}">Register</a>
+            {{/if}}
           </h4>
         </p>
       </div>
@@ -47,10 +77,13 @@
         </div>
         <div class="four columns">
           <ul>
-            <li><a href="{{pathFor route='shs'}}">SHS</a></li>
-            <li><a href="{{pathFor route='swls'}}">SWLS</a></li>
-            <li><a href="{{pathFor route='life_art'}}">Life Art</a></li>
-            <li><a href="{{pathFor route='pwb'}}">pwb</a></li>
+            {{#if currentUser}}
+              <li><a href="{{pathFor route='shs'}}">SHS</a></li>
+              <li><a href="{{pathFor route='swls'}}">SWLS</a></li>
+              <li><a href="{{pathFor route='life_art'}}">Life Art</a></li>
+              <li><a href="{{pathFor route='pwb'}}">pwb</a></li>
+            {{/if}}
+            <li><a href="">Impressum</a></li>
           </ul>
         </div>
         <div class="four columns">
@@ -66,10 +99,19 @@
 </template>
 
 <template name="home">
+  {{#if currentUser}}
+    {{> dashboard}}
+  {{else}}
+    {{> landing}}
+  {{/if}}
+</template>
+
+<template name="landing">
   <div class="container">
     <div class="row">
       <div class="twelve columns">
-        <h2>Hello world.</h2>
+        <h5>Hello world.</h5>
+        <p>Engineer clicks-and-mortar transform: strategize, life-hacks clicks-and-mortar systems peer-to-peer citizen-media; real-time viral markets action-items vertical next-generation optimize. Vortals cross-media unleash seize beta-test mashups infomediaries out-of-the-box seize value-added seamless, "cutting-edge rich networking." Brand viral; utilize visualize web services, reinvent applications rich engineer. Interactive blogospheres e-business empower scalable incentivize seamless initiatives data-driven share social engage world-class, A-list platforms addelivery e-enable revolutionize scalable front-end. Networks mission-critical impactful repurpose paradigms markets folksonomies peer-to-peer scale integrated folksonomies e-tailers cross-media viral. Mindshare reinvent; interfaces iterate, "one-to-one, strategic feeds," cross-media action-items seamless monetize transform robust, "repurpose, out-of-the-box." Mashups channels harness frictionless platforms clicks-and-mortar--embrace e-services transform rich-clientAPIs incentivize interfaces Cluetrain magnetic, platforms global evolve integrate, brand. Strategize reintermediate ubiquitous matrix, ubiquitous engineer functionalities models; clicks-and-mortar; facilitate embedded web services?</p>
       </div>
     </div>
   </div>

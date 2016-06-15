@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Router } from 'meteor/iron:router';
+import { Accounts } from 'meteor/accounts-base';
 
 /**
 * HTML Imports
@@ -12,9 +13,29 @@ import './shs.html';
 import './swls.html';
 import './accounts.html';
 
+
+
 /**
 * Routing
 */
+
+/*
+* onBeforeAction
+*/
+var onBeforeAction = function() {
+  if (!(Meteor.loggingIn() || Meteor.user())) {
+    this.render('login');
+  }
+  this.next();
+};
+
+Router.onBeforeAction(function() {
+  if (!(Meteor.loggingIn() || Meteor.user())) {
+    this.render('login');
+  }
+  this.next();
+});
+
 Router.configure({
   layoutTemplate: 'mainLayout'
 });
@@ -81,10 +102,8 @@ Template.register.events({
     var gender = $('input[name=gender]:checked').val();
     var day = $('select[name=day]').val();
     var month = $('select[name=month]').val();
+    month = parseInt(month) -1;
     var year = $('select[name=year]').val();
-    if(password == passwordVerify) {
-
-    }
     var account = {
       email: email,
       password: password,
@@ -92,7 +111,16 @@ Template.register.events({
       gender: gender,
       birthDate: new Date(year, month, day, 0,0,0,0)
     };
-    console.log(account);
+    if(password == passwordVerify) {
+      Accounts.createUser({
+        email: email,
+        password: password,
+        profile: {
+          gender: gender,
+          birthDate: account.birthDate
+        }
+      });
+    }
   }
 });
 
@@ -104,8 +132,25 @@ Template.login.events({
     event.preventDefault();
     var email = $('input[name=email]').val();
     var password = $('input[name=password]').val();
-    console.log(email);
-    console.log(password);
+    Meteor.loginWithPassword(email, password);
+  }
+});
+
+/**
+* Navbar events
+*/
+Template.navbar.events({
+  'click .logOut': function(event) {
+    event.preventDefault();
+    Meteor.logout();
+  }
+});
+
+Template.navbar.helpers({
+  userEmail: function() {
+    var user = Meteor.user();
+    if (user && user.emails)
+      return user.emails[0].address;
   }
 });
 
