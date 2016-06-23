@@ -120,6 +120,7 @@ Template.register.events({
           birthDate: account.birthDate
         }
       });
+      Router.go('/');
     }
   }
 });
@@ -133,6 +134,7 @@ Template.login.events({
     var email = $('input[name=email]').val();
     var password = $('input[name=password]').val();
     Meteor.loginWithPassword(email, password);
+    Router.go('/');
   }
 });
 
@@ -143,6 +145,7 @@ Template.navbar.events({
   'click .logOut': function(event) {
     event.preventDefault();
     Meteor.logout();
+    Router.go('/');
   }
 });
 

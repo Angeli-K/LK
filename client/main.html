@@ -1,27 +1,29 @@
 <head>
   <title>Honeybumps - Because she said so!</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body>
 </body>
 
 <template name="dashboard">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         DIAGRAM
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         DIAGRAM
       </div>
-      <div class="six columns">
+      <div class="col-md-6">
         DIAGRAM
       </div>
     </div>
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         LAST TEST AND TRAININGSFEEDS
       </div>
     </div>
@@ -29,73 +31,85 @@
 </template>
 
 <template name="navbar">
-  <div class="container">
-    <div class="row">
-      <div class="eight columns">
-        <p>
-          <h4>
-            <a href="{{pathFor route='home'}}">Home/Dashboard</a>
-            {{#if currentUser}}
-              <a href="{{pathFor route='home'}}">Home</a> &ndash;
-              <a href="{{pathFor route='shs'}}">SHS</a> &ndash;
-              <a href="{{pathFor route='swls'}}">SWLS</a> &ndash;
-              <a href="{{pathFor route='life_art'}}">Life Art</a> &ndash;
-              <a href="{{pathFor route='pwb'}}">PWB</a>
-            {{/if}}
-          </h4>
-        </p>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{pathFor route='home'}}">Honeybumps</a>
       </div>
-      <div class="four columns">
-        <p>
-          <h4>
-            {{#if currentUser}}
-              <a href="">{{userEmail}}</a>
-              <a href="" class="logOut">Logout</a>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{pathFor route='home'}}">Home</a></li>
+          {{#if currentUser}}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Training <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{pathFor route='shs'}}">SHS</a></li>
+                  <li><a href="{{pathFor route='swls'}}">SWLS</a></li>
+                  <li><a href="{{pathFor route='life_art'}}">Life Art</a></li>
+                  <li><a href="{{pathFor route='pwb'}}">PWB</a></li>
+                </ul>
+              </li>
+              <li><a href="">Ergebnisse</a></li>
+              <li><a href="">Settings</a></li>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default navbar-btn">{{userEmail}}</button>
+                <button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="">Settings</a></li>
+                  <li><a href="">Another action</a></li>
+                  <li><a href="">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="" class="logOut">Logout</a></li>
+                </ul>
+              </div>
             {{else}}
-              <a href="{{pathFor route='login'}}">Login</a>
-              <a href="{{pathFor route='register'}}">Register</a>
+              <li><a href="{{pathFor route='login'}}">Login</a></li>
+              <li><a href="{{pathFor route='register'}}">Register</a></li>
             {{/if}}
-          </h4>
-        </p>
-      </div>
-    </div>
-  </div>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid-fluid -->
+    </nav>
 </template>
 
 <template name="mainLayout">
   {{> navbar}}
   {{> yield}}
+  {{> footer}}
+  </template>
+
+<template name="footer">
   <footer>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="four columns">
-          <ul>
-            <li><a href="{{pathFor route='home'}}">Home</a></li>
-            <li></li>
+        <div class="col-md-6">
+          <ul class="list-inline">
             <li></li>
           </ul>
         </div>
-        <div class="four columns">
-          <ul>
-            {{#if currentUser}}
-              <li><a href="{{pathFor route='shs'}}">SHS</a></li>
-              <li><a href="{{pathFor route='swls'}}">SWLS</a></li>
-              <li><a href="{{pathFor route='life_art'}}">Life Art</a></li>
-              <li><a href="{{pathFor route='pwb'}}">pwb</a></li>
-            {{/if}}
+        <div class="col-md-6">
+          <ul class="list-inline pull-right">
+            <li><a href="">Kontakt</a></li>
+            <li><a href="">AGBs</a></li>
             <li><a href="">Impressum</a></li>
-          </ul>
-        </div>
-        <div class="four columns">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </template>
 
 <template name="home">
@@ -107,9 +121,9 @@
 </template>
 
 <template name="landing">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <h5>Hello world.</h5>
         <p>Engineer clicks-and-mortar transform: strategize, life-hacks clicks-and-mortar systems peer-to-peer citizen-media; real-time viral markets action-items vertical next-generation optimize. Vortals cross-media unleash seize beta-test mashups infomediaries out-of-the-box seize value-added seamless, "cutting-edge rich networking." Brand viral; utilize visualize web services, reinvent applications rich engineer. Interactive blogospheres e-business empower scalable incentivize seamless initiatives data-driven share social engage world-class, A-list platforms addelivery e-enable revolutionize scalable front-end. Networks mission-critical impactful repurpose paradigms markets folksonomies peer-to-peer scale integrated folksonomies e-tailers cross-media viral. Mindshare reinvent; interfaces iterate, "one-to-one, strategic feeds," cross-media action-items seamless monetize transform robust, "repurpose, out-of-the-box." Mashups channels harness frictionless platforms clicks-and-mortar--embrace e-services transform rich-clientAPIs incentivize interfaces Cluetrain magnetic, platforms global evolve integrate, brand. Strategize reintermediate ubiquitous matrix, ubiquitous engineer functionalities models; clicks-and-mortar; facilitate embedded web services?</p>
       </div>
