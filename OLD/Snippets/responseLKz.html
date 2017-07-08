@@ -1,0 +1,59 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {packages:['corechart']});
+google.charts.setOnLoadCallback(drawStuff);
+
+function drawStuff() {
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Skala');
+data.addColumn('number', 'Lebenskunst-Wert');
+data.addRows([
+['Balance', %valBA%],
+['Coping', %valCO%],
+['Gelassenheit', %valGE%],
+['Genuss', %valGS%],
+['Körperliche Selbstfürsorge', %valKO%],
+['Vereinbarkeit von Lebensbereichen', %valVL%],
+['Offenheit', %valOF%],
+['Optimierung', %valOP%],
+['Positive Lebenseinstellung', %valPO%],
+['Selbstbestimmte Lebensgestaltung', %valSB%],
+['Soziale Kontakte', %valSO%],
+['Selbstwirksamkeit', %valSW%],
+['Selbstkenntnis', %valSK%],
+['Umgebungsgestaltung', %valUM%],
+['Selbstaktualisierung', %valSA%],
+['Reflexion', %valRX%],
+['Sinn', %valSN%]
+]);
+
+var options = {
+title: 'Auswertung Ihres Lebenskunst-Fragebogens - Mittelwerte pro Skala',
+width: 700,
+height: 800,
+chartArea: {right: 20, top: 0, width: '50%', height: '75%' },
+orientation: 'vertical',
+legend: 'none',
+bar: {groupWidth: '95%'},
+hAxis: { gridlines: { count: 4 } }
+};
+
+var chart = new google.visualization.ColumnChart(document.getElementById('number_format_chart'));
+chart.draw(data, options);
+
+};
+</script>
+
+
+<div id="Heading">
+<h2> %heading% </h2>
+</div>
+
+<div>
+<p> Die Mittelwerte von der vorherigen Seite wurden nun <b> mit denen von über 1000 anderen Personen verglichen </b>, die diesen Fragebogen bereits ausgefüllt haben. Die Grafik oben zeigt die z-Werte dieses Vergleichs. Sind die z-Werte negativ bedeutet das, dass ihre Werte geringer ausgefallen sind als die eines durchschnittlichen Teilnehmenden der Vergleichsstichprobe. Sind die z-Werte positiv, so sind ihre Lebenskunst-Werte auf dieser Skala höher als beim durchschnittlichen Teilnehmenden der Vergleichsstichprobe. <br> </p>
+<p> Sind Sie zufrieden damit, wie Sie im Vergleich mit anderen abschneiden? Finden Sie in den Ergebnissen persönliche Stärken und Schwächen wieder? </p>
+</div>
+
+<div id="number_format_chart">
+</div>
+
