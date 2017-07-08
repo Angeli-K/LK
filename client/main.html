@@ -2,11 +2,6 @@
   <title>Lebenskunst Online-Trainings</title>
   <!-- Latest compiled and minified CSS -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- CSS Stylesheets +++ Theme isnpired By www.w3schools.com - No Copyright -->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- jQuery (Bootstrap JS plugins depend on it) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -29,7 +24,7 @@
 
 <template name="landing">
   <div id="main-content" class="container-fluid">
-  <div class="row">
+    <div class="row">
       <div class="col-md-12">
     		{{> carousel_snip}}
         {{> info_snip}}
@@ -40,11 +35,6 @@
 
 <template name="dashboard">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <img src="/index.jpeg" />
-      </div>
-    </div>
     <div class="row">
       <div class="col-md-12">
         {{#each resultsSHS}}
@@ -86,6 +76,7 @@
 </template>
 
 <template name="navbar">
+
   <nav class="navbar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -143,30 +134,23 @@
 <!-- Footer -->
 <template name="footer">
   <footer class="text-center">
-  	<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-    	<span class="glyphicon glyphicon-chevron-up"></span>
-  	</a><br>
-  <button class="btn" data-toggle="modal" data-target="modalKontakt">KONTAKT</button>
-  <button class="btn" data-toggle="modal" data-target="modalImpressum">IMPRESSUM</button>
-  <button class="btn" data-toggle="modal" data-target="modalDatenschutz">DATENSCHUTZ</button>  
-  {{> modal}}
-</footer>
-</template>
-
-<template name="modal">  
-  {{#if activeModal}}
-    <div class="modal">
-      {{> Template.dynamic template=activeModal}}
+    <div class="row">
+      <div class="col-md-12">  
+  	    <a class="up-arrow" href="" data-toggle="tooltip" title="TO TOP">
+    	    <span class="glyphicon glyphicon-chevron-up"></span>
+  	    </a>
+      </div>
     </div>
-  {{/if}}
-</template>
-
-
- <!-- Modal -->
-<template name="modalKontakt">
-  <div class="modal fade" id="contactModal" role="dialog">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn" data-toggle="modal" data-target="#modalKontakt">KONTAKT</button>
+        <button class="btn" data-toggle="modal" data-target="#modalImpressum">IMPRESSUM</button>
+        <button class="btn" data-toggle="modal" data-target="#modalDatenschutz">DATENSCHUTZ</button>
+      </div>
+    </div>
+  </footer>
+  <div class="modal fade" id="modalKontakt" role="dialog">
     <div class="modal-dialog">
-    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -195,72 +179,69 @@
       </div>
     </div>
   </div>
-</template>
-
-<template name="modalImpressum">
-<!-- Modal -->
-<div id="impressumModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
+  <!-- Modal -->
+  <div id="modalImpressum" class="modal fade" role="dialog">
+    <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Impressum</h4>
-      </div>
-      <div class="modal-body">
-		<strong>Angaben gemäß § 5 TMG:</strong>
-		<p>AG Pädagogische Psychologie, TU Darmstadt<br />
-		Alexanderstraße 10<br />
-		64283 Darmstadt
-		</p>
-		<strong>Vertreten durch:</strong>
-		<p>Prof. Bernhard Schmitz<br />
-		Angelika Kern</p>
-		<strong>Kontakt:</strong>
-		<table><tr>
-		<td>Telefon:</td>
-		<td>+49 (0) 123 44 55 66</td></tr>
-		<tr><td>Telefax:</td>
-		<td>+49 (0) 123 44 55 99</td></tr>
-		<tr><td>E-Mail:</td>
-		<td>mustermann@musterfirma.de</td>
-		</tr></table>
-		<p> </p>
-		<p>Quelle: <em><a href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de</a></em></p>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Impressum</h4>
+        </div>
+        <div class="modal-body">
+		      <strong>Angaben gemäß § 5 TMG:</strong>
+		      <p>AG Pädagogische Psychologie, TU Darmstadt<br />
+		        Alexanderstraße 10<br />
+		        64283 Darmstadt
+		      </p>
+		      <strong>Vertreten durch:</strong>
+		      <p>Prof. Bernhard Schmitz<br />
+		      Angelika Kern</p>
+		      <strong>Kontakt:</strong>
+		      <table>
+            <tr>
+		          <td>Telefon:</td>
+		          <td>+49 (0) 123 44 55 66</td>
+            </tr>
+		        <tr>
+              <td>Telefax:</td>
+		          <td>+49 (0) 123 44 55 99</td>
+            </tr>
+            <tr>
+              <td>E-Mail:</td>
+		          <td>mustermann@musterfirma.de</td>
+		        </tr>
+          </table>
+		      <p> </p>
+		      <p>Quelle: <em><a href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de</a></em></p>
 
-		<h1>Haftungsausschluss (Disclaimer)</h1>
-		<p><strong>Haftung für Inhalte</strong></p> <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p> <p><strong>Haftung für Links</strong></p> <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p> <p><strong>Urheberrecht</strong></p> <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p><p> </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+		      <h1>Haftungsausschluss (Disclaimer)</h1>
+		      <p><strong>Haftung für Inhalte</strong></p> <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p> <p><strong>Haftung für Links</strong></p> <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p> <p><strong>Urheberrecht</strong></p> <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p><p> </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
-</template>
 
-<template name="modalDatenschutz">
-<div id="datenschutzModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
+  <div id="modalDatenschutz" class="modal fade" role="dialog">
+    <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Datenschutzerklärung</h4>
-      </div>
-      <div class="modal-body">
-		<p><strong>Datenschutz</strong></p> <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p> <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p> <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p><p> </p>
-		<p><strong>Auskunft, Löschung, Sperrung</strong></p> <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p> <p> </p>
-		<p><strong>Newsletterdaten</strong></p> <p>Wenn Sie den auf der Webseite angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben sie nicht an Dritte weiter.</p> <p>Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen , etwa über den „Austragen“-Link im Newsletter.</p><p> </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Datenschutzerklärung</h4>
+        </div>
+        <div class="modal-body">
+		      <p><strong>Datenschutz</strong></p> <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p> <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p> <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p><p> </p>
+		      <p><strong>Auskunft, Löschung, Sperrung</strong></p> <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p> <p> </p>
+		      <p><strong>Newsletterdaten</strong></p> <p>Wenn Sie den auf der Webseite angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben sie nicht an Dritte weiter.</p> <p>Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen , etwa über den „Austragen“-Link im Newsletter.</p><p> </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
 </template>
