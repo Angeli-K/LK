@@ -15,6 +15,8 @@ import './accounts.html';
 
 
 
+SHS = new Mongo.Collection('shs');
+
 /**
 * Routing
 */
@@ -237,7 +239,8 @@ Template.shs.events({
     } else {
       result['finished'] = false;
     }
-    console.log(result);
+    Meteor.call('save_shs', {user: Meteor.user().emails[0].address, result: result}); // IMPORTANT! : CALLS THE SAVE FUNCTION ON SERVER SIDE TO SAVE THE TEST RESULT
+    console.log(res);
     $('.shs').trigger('reset');
   }
 });
@@ -261,5 +264,25 @@ Template.swls.events({
       result['finished'] = false;
     }
     console.log(result);
+  }
+
+});
+
+Template.dashboard.events({
+
+});
+
+/**
+ * WENN DAS DASHBOARD TEMPLATE GELADEN IST
+ * DANN SUBSCRIBEN WIR ZU DER shs.results PUBLIKATION VOM SERVER UM IN UNSERER LOKALEN SHS Collection die Daten zu empfangen um sie anzeigen zu können
+ */
+Template.dashboard.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('shs.results');
+  });
+});
+Template.dashboard.helpers({
+  results: function() { // WIR HOLEN DIE DATEN MIT EINER HILFSFUNKTION AUS DER LOKALEN DATENBANK UM SIE IM TEMPLATE VERWENDEN ZU KÖNNEN
+    return SHS.find({});
   }
 });
