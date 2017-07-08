@@ -17,9 +17,21 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        {{#each results}}
+        {{#each resultsSHS}}
           {{date}} {{result.shs_result}}
         {{/each}}
+
+        {{#each resultsSWLS}}
+          {{date}} {{result.swls_result}}
+        {{/each}}
+
+        {{#each resultsPWB}}
+          {{date}} {{result.autonomy}}
+        {{/each}}
+
+        {{#each resultsLIFE_ART}}
+          {{date}} {{result.of}}
+        {{/each}}        
       </div>
     </div>
     <div class="row">

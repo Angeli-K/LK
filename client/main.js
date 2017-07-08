@@ -14,8 +14,11 @@ import './swls.html';
 import './accounts.html';
 
 
-
+// NEUE COLLECTIONS UM DATEN CLIENT-SIDE ZU SPEICHERN
 SHS = new Mongo.Collection('shs');
+SWLS = new Mongo.Collection('swls');
+PWB = new Mongo.Collection('pwb');
+LIFE_ART = new Mongo.Collection('life_art');
 
 /**
 * Routing
@@ -187,6 +190,7 @@ Template.life_art.events({
     } else {
       result['finished'] = false;
     }
+    Meteor.call('save_life_art', {user: Meteor.user().emails[0].address, result: result}); // IMPORTANT! : CALLS THE SAVE FUNCTION ON SERVER SIDE TO SAVE THE TEST RESULT
     console.log(result);
   }
 });
@@ -215,6 +219,7 @@ Template.pwb.events({
     } else {
       result['finished'] = false;
     }
+    Meteor.call('save_pwb', {user: Meteor.user().emails[0].address, result: result}); // IMPORTANT! : CALLS THE SAVE FUNCTION ON SERVER SIDE TO SAVE THE TEST RESULT
     console.log(result);
     $('.pwb').trigger('reset');
   }
@@ -240,7 +245,7 @@ Template.shs.events({
       result['finished'] = false;
     }
     Meteor.call('save_shs', {user: Meteor.user().emails[0].address, result: result}); // IMPORTANT! : CALLS THE SAVE FUNCTION ON SERVER SIDE TO SAVE THE TEST RESULT
-    console.log(res);
+    console.log(result);
     $('.shs').trigger('reset');
   }
 });
@@ -263,6 +268,7 @@ Template.swls.events({
     } else {
       result['finished'] = false;
     }
+    Meteor.call('save_swls', {user: Meteor.user().emails[0].address, result: result}); // IMPORTANT! : CALLS THE SAVE FUNCTION ON SERVER SIDE TO SAVE THE TEST RESULT
     console.log(result);
   }
 
@@ -279,10 +285,24 @@ Template.dashboard.events({
 Template.dashboard.onCreated(function() {
   this.autorun(() => {
     this.subscribe('shs.results');
+    this.subscribe('swls.results');
+    this.subscribe('pwb.results');
+    this.subscribe('life_art.results');
   });
 });
+
+// WIR HOLEN DIE DATEN MIT EINER HILFSFUNKTION AUS DER LOKALEN DATENBANK UM SIE IM TEMPLATE VERWENDEN ZU KÖNNEN
 Template.dashboard.helpers({
-  results: function() { // WIR HOLEN DIE DATEN MIT EINER HILFSFUNKTION AUS DER LOKALEN DATENBANK UM SIE IM TEMPLATE VERWENDEN ZU KÖNNEN
+  resultsSHS: function() { 
     return SHS.find({});
+  },
+  resultsSWLS: function(){
+    return SWLS.find({});
+  },
+  resultsPWB: function(){
+    return PWB.find({});
+  },
+  resultsLIFE_ART: function(){
+    return LIFE_ART.find({});
   }
 });
