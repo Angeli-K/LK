@@ -2,11 +2,41 @@
   <title>Lebenskunst Online-Trainings</title>
   <!-- Latest compiled and minified CSS -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- CSS Stylesheets +++ Theme isnpired By www.w3schools.com - No Copyright -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery (Bootstrap JS plugins depend on it) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 </body>
+
+<template name="mainLayout">
+  {{> navbar}}
+  {{> yield}}
+  {{> footer}}
+</template>
+
+<template name="home">
+  {{#if currentUser}}
+    {{> dashboard}}
+  {{else}}
+    {{> landing}}
+  {{/if}} 
+ </template>
+
+<template name="landing">
+  <div id="main-content" class="container-fluid">
+  <div class="row">
+      <div class="col-md-12">
+    		{{> carousel_snip}}
+        {{> info_snip}}
+  		</div>
+  	</div>
+  </div>
+</template>
 
 <template name="dashboard">
   <div class="container-fluid">
@@ -56,7 +86,7 @@
 </template>
 
 <template name="navbar">
-  <nav class="navbar navbar-default">
+  <nav class="navbar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -109,50 +139,128 @@
     </nav>
 </template>
 
-<template name="mainLayout">
-  {{> navbar}}
-  {{> yield}}
-  {{> footer}}
-  </template>
 
+<!-- Footer -->
 <template name="footer">
-  <footer>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <ul class="list-inline">
-            <li></li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <ul class="list-inline pull-right">
-            <li><a href="">Kontakt</a></li>
-            <li><a href="">AGBs</a></li>
-            <li><a href="">Impressum</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="https://use.fontawesome.com/738f33c151.js"></script>
+  <footer class="text-center">
+  	<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    	<span class="glyphicon glyphicon-chevron-up"></span>
+  	</a><br>
+  <button class="btn" data-toggle="modal" data-target="modalKontakt">KONTAKT</button>
+  <button class="btn" data-toggle="modal" data-target="modalImpressum">IMPRESSUM</button>
+  <button class="btn" data-toggle="modal" data-target="modalDatenschutz">DATENSCHUTZ</button>  
+  {{> modal}}
+</footer>
 </template>
 
-<template name="home">
-  {{#if currentUser}}
-    {{> dashboard}}
-  {{else}}
-    {{> landing}}
+<template name="modal">  
+  {{#if activeModal}}
+    <div class="modal">
+      {{> Template.dynamic template=activeModal}}
+    </div>
   {{/if}}
 </template>
 
-<template name="landing">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <h5>Hello world.</h5>
-        <p>Engineer clicks-and-mortar transform: strategize, life-hacks clicks-and-mortar systems peer-to-peer citizen-media; real-time viral markets action-items vertical next-generation optimize. Vortals cross-media unleash seize beta-test mashups infomediaries out-of-the-box seize value-added seamless, "cutting-edge rich networking." Brand viral; utilize visualize web services, reinvent applications rich engineer. Interactive blogospheres e-business empower scalable incentivize seamless initiatives data-driven share social engage world-class, A-list platforms addelivery e-enable revolutionize scalable front-end. Networks mission-critical impactful repurpose paradigms markets folksonomies peer-to-peer scale integrated folksonomies e-tailers cross-media viral. Mindshare reinvent; interfaces iterate, "one-to-one, strategic feeds," cross-media action-items seamless monetize transform robust, "repurpose, out-of-the-box." Mashups channels harness frictionless platforms clicks-and-mortar--embrace e-services transform rich-clientAPIs incentivize interfaces Cluetrain magnetic, platforms global evolve integrate, brand. Strategize reintermediate ubiquitous matrix, ubiquitous engineer functionalities models; clicks-and-mortar; facilitate embedded web services?</p>
+
+ <!-- Modal -->
+<template name="modalKontakt">
+  <div class="modal fade" id="contactModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-envelope"></span> Kontakt </h4>
+          <p class="text-center"><em> Wir freuen uns über Lob, Kritik und Verbesserungsvorschläge! </em></p>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Kommentar" rows="5"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default pull-right"> <span class="glyphicon glyphicon-ok"></span> abschicken </button>
+          <button type="submit" class="btn btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> abbrechen
+          </button>
+          <!-- <p>Need <a href="#">help?</a></p> -->
+        </div>
       </div>
     </div>
   </div>
+</template>
+
+<template name="modalImpressum">
+<!-- Modal -->
+<div id="impressumModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Impressum</h4>
+      </div>
+      <div class="modal-body">
+		<strong>Angaben gemäß § 5 TMG:</strong>
+		<p>AG Pädagogische Psychologie, TU Darmstadt<br />
+		Alexanderstraße 10<br />
+		64283 Darmstadt
+		</p>
+		<strong>Vertreten durch:</strong>
+		<p>Prof. Bernhard Schmitz<br />
+		Angelika Kern</p>
+		<strong>Kontakt:</strong>
+		<table><tr>
+		<td>Telefon:</td>
+		<td>+49 (0) 123 44 55 66</td></tr>
+		<tr><td>Telefax:</td>
+		<td>+49 (0) 123 44 55 99</td></tr>
+		<tr><td>E-Mail:</td>
+		<td>mustermann@musterfirma.de</td>
+		</tr></table>
+		<p> </p>
+		<p>Quelle: <em><a href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de</a></em></p>
+
+		<h1>Haftungsausschluss (Disclaimer)</h1>
+		<p><strong>Haftung für Inhalte</strong></p> <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p> <p><strong>Haftung für Links</strong></p> <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p> <p><strong>Urheberrecht</strong></p> <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p><p> </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</template>
+
+<template name="modalDatenschutz">
+<div id="datenschutzModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Datenschutzerklärung</h4>
+      </div>
+      <div class="modal-body">
+		<p><strong>Datenschutz</strong></p> <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p> <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p> <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p><p> </p>
+		<p><strong>Auskunft, Löschung, Sperrung</strong></p> <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p> <p> </p>
+		<p><strong>Newsletterdaten</strong></p> <p>Wenn Sie den auf der Webseite angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben sie nicht an Dritte weiter.</p> <p>Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen , etwa über den „Austragen“-Link im Newsletter.</p><p> </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </template>
