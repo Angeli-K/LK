@@ -1,5 +1,0 @@
-SWLS1	In den meisten Bereichen entspricht mein Leben meinen Idealvorstellungen.
-SWLS2	Meine Lebensbedingungen sind ausgezeichnet.
-SWLS3	Ich bin mit meinem Leben zufrieden.
-SWLS4	Bisher habe ich die wesentlichen Dinge erreicht, die ich mir fr mein Leben wnsche.
-SWLS5	Wenn ich mein Leben noch einmal leben k”nnte, wrde ich kaum etwas „ndern.
