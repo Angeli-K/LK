@@ -1,3 +1,4 @@
+
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Router } from 'meteor/iron:router';
@@ -14,6 +15,7 @@ import './swls.html';
 import './accounts.html';
 import './snip_Carousel.html';
 import './snip_Info.html';
+import './Uebungen.html';
 
 // NEUE COLLECTIONS UM DATEN CLIENT-SIDE ZU SPEICHERN
 SHS = new Mongo.Collection('shs');
@@ -89,6 +91,11 @@ Router.route('/life_art', {
 Router.route('/swls', {
     name: 'swls',
     template: 'swls'
+});
+
+Router.route('/uebungen', {
+    name: 'uebungen',
+    template: 'Uebungen'
 });
 
 /**

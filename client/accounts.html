@@ -11,11 +11,17 @@
     <div class="row">
       <div class="six columns">
         <form class="login">
-          <label for="email"> Ihre E-Mail-Adresse </label>
-          <input type="email" name="email" id="email" class="email u-full-width">
-          <label for="password"> Ihr Passwort </label>
-          <input type="password" name="password" id="password" class="password u-full-width">
-          <input class="button" type="submit" value="Submit">
+        <p>
+          <label for="email"> Ihre E-Mail-Adresse </label> <tab indent=20> <tab id=t1>
+          <input type="email" name="email" id="email" class="email u-full-width"> </tab> </tab> 
+        </p>
+        <p>
+          <label for="password"> Ihr Passwort </label> <tab to=t1> 
+          <input type="password" name="password" id="password" class="password u-full-width"> </tab>
+        </p>
+        <p>
+          <input class="button" type="submit" value="abschicken">
+        </p>
         </form>
       </div>
       <div class="six columns">
@@ -30,28 +36,29 @@
       <form class="register">
         <div class="six columns">
           <p>
-            <label for="email">Ihre E-Mail-Adresse </label>
-            <input type="email" name="email" id="email" class="email u-full-width">
+            <label for="email">Ihre E-Mail-Adresse </label> <tab indent=20> <tab id=t1>
+            <input type="email" name="email" id="email" class="email u-full-width"> </tab> </tab>
           </p>
           <p>
-            <label for="password">Ihr Passwort</label>
-            <input type="password" name="password" id="password" class="password u-full-width">
+            <label for="password">Ihr Passwort</label> <tab to=t1>
+            <input type="password" name="password" id="password" class="password u-full-width"> </tab>
           </p>
           <p>
-            <label for="password_verify">Passwort bestätigen</label>
-            <input type="password" name="passwordVerify" id="passwordVerify" class="passwordVerify u-full-width">
+            <label for="password_verify">Passwort bestätigen</label> <tab to=t1>
+            <input type="password" name="passwordVerify" id="passwordVerify" class="passwordVerify u-full-width"> </tab>
           </p>
-          <input class="button" type="submit" value="Submit">
         </div>
         <div class="six columns">
         <p>
-          <label for="gender">Geschlecht</label>
-          <input type="radio" name="gender" value="male"> männlich
-          <input type="radio" name="gender" value="female"> weiblich
+          <label for="gender">Geschlecht</label> <tab to=t1>
+          <input type="radio" name="gender" value="male"> männlich </tab> <tab>
+          <input type="radio" name="gender" value="female"> weiblich </tab>
         </p>
         <p>
-          <label for="date_of_birth">Geburtsdatum</label> </n>
-          <label for="day_of_birth_day">Tag</label>
+          <label for="date_of_birth">Geburtsdatum</label>
+        </p>
+        <p>
+          <label for="day_of_birth_day">Tag</label> <tab to=t1>
           <select name="day" id="date_of_birth_day">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -84,8 +91,8 @@
             <option value="29">29</option>
             <option value="30">30</option>
             <option value="31">31</option>
-          </select>
-          <label for="day_of_birth_month">Monat</label>
+          </select>  </tab><tab>
+          <label for="day_of_birth_month">Monat</label> </tab><tab>
           <select name="month" id="date_of_birth_month">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -99,8 +106,8 @@
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
-          </select>
-          <label for="day_of_birth_year">Jahr</label>
+          </select> </tab> <tab>
+          <label for="day_of_birth_year">Jahr</label></tab> <tab>
           <select name="year" id="date_of_birth_year">
             <option value="2016">2016</option>
             <option value="2015">2015</option>
@@ -219,7 +226,10 @@
             <option value="1902">1902</option>
             <option value="1901">1901</option>
             <option value="1900">1900</option>
-          </select>
+          </select></tab>
+        </p>
+        <p>
+          <input class="button" type="submit" value="abschicken">
         </p>
         </div>
       </form>
@@ -234,7 +244,7 @@
         <form class="forgotPassword">
           <label for="email">Ihre E-Mail</label>
           <input type="email" name="email" id="email" class="email u-full-width">
-          <input class="button" type="submit" value="Submit">
+          <input class="button" type="submit" value="abschicken">
         </form>
       </div>
     </div>
