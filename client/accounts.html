@@ -2,18 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="six columns">
-        <h3>Login with password</h3>
+        <h3>Login mit Passwort</h3>
       </div>
-      <div class="six columns">
+<!--       <div class="six columns">
         <h3>Login with social</h3>
-      </div>
+      </div> -->
     </div>
     <div class="row">
       <div class="six columns">
         <form class="login">
-          <label for="email">Your email</label>
+          <label for="email"> Ihre E-Mail-Adresse </label>
           <input type="email" name="email" id="email" class="email u-full-width">
-          <label for="password">Your password</label>
+          <label for="password"> Ihr Passwort </label>
           <input type="password" name="password" id="password" class="password u-full-width">
           <input class="button" type="submit" value="Submit">
         </form>
@@ -29,20 +29,29 @@
     <div class="row">
       <form class="register">
         <div class="six columns">
-          <label for="email">Your email</label>
-          <input type="email" name="email" id="email" class="email u-full-width">
-          <label for="password">Your password</label>
-          <input type="password" name="password" id="password" class="password u-full-width">
-          <label for="password_verify">Verify password</label>
-          <input type="password" name="passwordVerify" id="passwordVerify" class="passwordVerify u-full-width">
+          <p>
+            <label for="email">Ihre E-Mail-Adresse </label>
+            <input type="email" name="email" id="email" class="email u-full-width">
+          </p>
+          <p>
+            <label for="password">Ihr Passwort</label>
+            <input type="password" name="password" id="password" class="password u-full-width">
+          </p>
+          <p>
+            <label for="password_verify">Passwort bestätigen</label>
+            <input type="password" name="passwordVerify" id="passwordVerify" class="passwordVerify u-full-width">
+          </p>
           <input class="button" type="submit" value="Submit">
         </div>
         <div class="six columns">
-          <label for="gender">Your gender</label>
-          <input type="radio" name="gender" value="male"> Male
-          <input type="radio" name="gender" value="female"> Female
-          <label for="date_of_birth">Your date of birth</label>
-          <label for="day_of_birth_day">Day</label>
+        <p>
+          <label for="gender">Geschlecht</label>
+          <input type="radio" name="gender" value="male"> männlich
+          <input type="radio" name="gender" value="female"> weiblich
+        </p>
+        <p>
+          <label for="date_of_birth">Geburtsdatum</label> </n>
+          <label for="day_of_birth_day">Tag</label>
           <select name="day" id="date_of_birth_day">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -76,7 +85,7 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
-          <label for="day_of_birth_month">Month</label>
+          <label for="day_of_birth_month">Monat</label>
           <select name="month" id="date_of_birth_month">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -91,7 +100,7 @@
             <option value="11">11</option>
             <option value="12">12</option>
           </select>
-          <label for="day_of_birth_year">Year</label>
+          <label for="day_of_birth_year">Jahr</label>
           <select name="year" id="date_of_birth_year">
             <option value="2016">2016</option>
             <option value="2015">2015</option>
@@ -211,6 +220,7 @@
             <option value="1901">1901</option>
             <option value="1900">1900</option>
           </select>
+        </p>
         </div>
       </form>
     </div>
@@ -222,7 +232,7 @@
     <div class="row">
       <div class="six columns">
         <form class="forgotPassword">
-          <label for="email">Your email</label>
+          <label for="email">Ihre E-Mail</label>
           <input type="email" name="email" id="email" class="email u-full-width">
           <input class="button" type="submit" value="Submit">
         </form>
