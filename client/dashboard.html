@@ -1,0 +1,64 @@
+<template name="dashboard">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="testsIntro" class="container text-center">
+          <h3> Wie glücklich sind Sie und wie können Sie glücklicher werden?</h3>
+          <p> Oft hat man nur ein Bauchgefühl dazu, ob man glücklich ist oder nicht. Eigentlich ist das ja auch vollkommen ausreichend, es sei denn, man möchte sein Glück beeinflussen. Dann ist es nämlich wichtig zu wissen, in welchen Bereichen des Lebens man weniger glücklich ist, um daran arbeiten zu können. Die folgenden Tests sollen dabei helfen, verschiedene Aspekte von Glück zu erfassen und so einen detaillierteren Überblick zu bekommen, wie glücklich Sie sind, was Sie glücklich macht und wie Sie noch glücklicher werden könnten. </p>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3> Der Lebenskunst-Fragebogen</h3>
+        <a href="{{pathFor route='life_art'}}">Lebenskunst</a>
+        {{#if resultsLIFE_ART}}
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+            google.charts.load('current', {packages:['corechart']}); 
+            google.charts.setOnLoadCallback(drawStuff); 
+          </script>
+          <div id="number_format_chart"></div>
+          {{#each resultsLIFE_ART}}
+            {{date}} {{result.of}}
+          {{/each}}
+        {{else}}
+          <p> Sie haben den Lebenskunst-Fragebogen noch nicht ausgefüllt! Klicken Sie hier um das nachzuholen: </p>
+        {{/if}} 
+      </div>
+      <div class="col-md-6">
+        <h3> Die Personal-Wellbeing Scale </h3>
+        <a href="{{pathFor route='pwb'}}">PWB</a>
+        {{#each resultsPWB}}
+          {{date}} {{result.autonomy}}
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3> Die Subjective Happiness Scale </h3>
+        <a href="{{pathFor route='shs'}}">SHS</a>
+        {{#each resultsSHS}}
+          {{date}} {{result.shs_result}}
+        {{/each}}
+      </div>
+      <div class="col-md-6">
+        <h3> Die SWLS-Scale </h3>
+        <a href="{{pathFor route='swls'}}">SWLS</a>
+        {{#each resultsSWLS}}
+          {{date}} {{result.swls_result}}
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        More about Tests
+      </div>
+    </div>
+
+  </div>
+</template>

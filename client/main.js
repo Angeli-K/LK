@@ -16,6 +16,7 @@ import './accounts.html';
 import './snip_Carousel.html';
 import './snip_Info.html';
 import './Uebungen.html';
+import './dashboard.html';
 
 // NEUE COLLECTIONS UM DATEN CLIENT-SIDE ZU SPEICHERN
 SHS = new Mongo.Collection('shs');
